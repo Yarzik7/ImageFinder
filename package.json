@@ -19,7 +19,12 @@
     "url": "https://github.com/Yarzik7/ImageFinder/issues"
   },
   "devDependencies": {
-    "parcel": "^2.10.2"
+    "@parcel/transformer-sass": "^2.10.2",
+    "parcel": "^2.10.2",
+    "parcel-reporter-clean-dist": "^1.0.4"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "dependencies": {
+    "modern-normalize": "^2.0.0"
+  }
 }
