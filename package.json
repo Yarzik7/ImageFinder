@@ -2,6 +2,7 @@
   "name": "imagefinder",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://Yarzik7.github.io/ImageFinder",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,8 +19,8 @@
   "bugs": {
     "url": "https://github.com/Yarzik7/ImageFinder/issues"
   },
-  "homepage": "https://github.com/Yarzik7/ImageFinder#readme",
   "devDependencies": {
     "parcel": "^2.10.2"
-  }
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }
