@@ -1,0 +1,25 @@
+{
+  "name": "imagefinder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /imagefinder/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yarzik7/ImageFinder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yarzik7/ImageFinder/issues"
+  },
+  "homepage": "https://github.com/Yarzik7/ImageFinder#readme",
+  "devDependencies": {
+    "parcel": "^2.10.2"
+  }
+}
