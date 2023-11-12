@@ -25,6 +25,8 @@
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
-    "modern-normalize": "^2.0.0"
+    "axios": "^1.6.1",
+    "modern-normalize": "^2.0.0",
+    "simplelightbox": "^2.14.2"
   }
 }

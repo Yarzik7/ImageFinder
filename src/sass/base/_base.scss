@@ -4,3 +4,17 @@ body {
   color: var(--accent-color);
   background-color: var(--bg-color);
 }
+
+.container {
+  // width: 1400px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+.section {
+  // width: 1600px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}

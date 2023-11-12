@@ -1,4 +1,8 @@
 :root {
   --accent-color: #f49b03;
   --bg-color: #1b1a1a;
+  --bg-button-color: #c0c0c0;
+
+  --transition-duration: 300ms;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

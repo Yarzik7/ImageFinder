@@ -1,0 +1,11 @@
+.photo-card {
+  overflow: hidden;
+  flex-basis: calc((100% - 3 * 15px) / 4);
+
+  @include transition(scale);
+
+  &:hover,
+  &:focus {
+    scale: 1.05;
+  }
+}

@@ -1,0 +1,23 @@
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  height: 70px;
+
+  &__item {
+    margin: 0;
+    display: block;
+    //flex-direction: column;
+  }
+
+  &__caption {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  &__count {
+    display: block;
+  }
+}

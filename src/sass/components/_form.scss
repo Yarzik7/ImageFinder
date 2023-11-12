@@ -1,0 +1,36 @@
+.search-form {
+  position: relative;
+
+  &__input {
+    min-width: 350px;
+    height: 40px;
+    padding-left: 15px;
+
+    border-radius: 10px;
+    border-style: none;
+    outline: none;
+  }
+
+  &__button-search {
+    position: absolute;
+    right: 0;
+
+    width: 40px;
+    height: 40px;
+
+    background-color: var(--bg-button-color);
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: none;
+
+    cursor: pointer;
+
+    transition: background-color var(--transition-duration) var(--transition-timing-function);
+
+    &:hover,
+    &:focus {
+      background-color: var(--accent-color);
+    }
+  }
+}

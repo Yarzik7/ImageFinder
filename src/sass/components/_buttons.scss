@@ -1,0 +1,23 @@
+.button-load-more {
+  display: none;
+  margin-top: 30px;
+  width: 150px;
+  height: 50px;
+  padding: 15px;
+
+  font-size: 20px;
+  line-height: 1;
+
+  background-color: var(--bg-button-color);
+  border-style: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  @include transition(background-color);
+
+  &:hover,
+  &:focus {
+    background-color: var(--accent-color);
+  }
+}
