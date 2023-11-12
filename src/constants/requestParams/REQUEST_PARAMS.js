@@ -1,6 +1,9 @@
 // Адреса api сервера
 const BASE_URL = 'https://pixabay.com/api/';
 
+// Кількість зображень на 1 сторінку
+const PER_PAGE = 40;
+
 // Параметри запиту
 const REQUEST_PARAMS = Object.freeze({
   key: '',
@@ -9,7 +12,7 @@ const REQUEST_PARAMS = Object.freeze({
   orientation: 'horizontal',
   safesearch: 'true',
   page: 1,
-  per_page: 40,
+  per_page: PER_PAGE,
 });
 
-export { REQUEST_PARAMS, BASE_URL };
+export { REQUEST_PARAMS, BASE_URL, PER_PAGE };
