@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /imagefinder/"
+    "build": "parcel build src/*.html --public-url /ImageFinder/"
   },
   "repository": {
     "type": "git",
