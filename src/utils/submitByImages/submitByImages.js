@@ -20,7 +20,7 @@ const promiseSuccessfulProcessing = imagesSet => {
 
   refs.messageTextEl.style.display = 'none';
 
-  isHiddenLoadMore = hits.length < PER_PAGE || totalHits / PER_PAGE === page;
+  isHiddenLoadMore = hits.length < PER_PAGE || Math.ceil(totalHits / PER_PAGE) === page;
 
   // If no requested image is found
   if (!totalHits) {
@@ -40,7 +40,6 @@ const promiseSuccessfulProcessing = imagesSet => {
   const galleryNodes = hits.map(imageInfo => createImageNode(imageInfo));
   refs.galleryEl.insertAdjacentHTML('beforeend', galleryNodes.join(''));
   simpleLightBox.refresh();
-  page > 2 && smoothScroll();
 };
 
 /**
@@ -55,11 +54,23 @@ const promiseErrorProcessing = error => {
 };
 
 /**
+ * Final actions after a request attempt
+ */
+const promiseFinallyProcessing = () => {
+  refs.loaderEl.style.display = 'none';
+  page > 2 && smoothScroll();
+};
+
+/**
  * Calls a function to perform a request to the server
  * @param {string} q - query
  */
 const callFetchImages = async q => {
-  await fetchImages({ q, page }).then(promiseSuccessfulProcessing).catch(promiseErrorProcessing);
+  refs.loaderEl.style.display = 'block';
+  await fetchImages({ q, page })
+    .then(promiseSuccessfulProcessing)
+    .catch(promiseErrorProcessing)
+    .finally(promiseFinallyProcessing);
 };
 
 /**
@@ -84,10 +95,10 @@ const onSubmitByImages = async event => {
     return;
   }
 
+  refs.messageTextEl.style.display = 'none';
   await callFetchImages(inputText);
 
   if (page > 1) {
-    refs.messageTextEl.style.display = 'none';
     refs.formEl.reset();
   }
 };
@@ -96,6 +107,7 @@ const onSubmitByImages = async event => {
  * Loading more images on previous request
  */
 const onLoadMoreImages = () => {
+  refs.loadMoreEl.blur();
   refs.loadMoreEl.style.display = 'none';
   callFetchImages(inputText);
 };

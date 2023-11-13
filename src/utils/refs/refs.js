@@ -4,4 +4,5 @@ export const refs = {
   loadMoreEl: document.querySelector('.button-load-more'),
   galleryEl: document.querySelector('.gallery'),
   messageTextEl: document.querySelector('.message'),
+  loaderEl: document.querySelector('.loader'),
 };
