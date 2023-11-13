@@ -6,7 +6,7 @@ const PER_PAGE = 40;
 
 // Параметри запиту
 const REQUEST_PARAMS = Object.freeze({
-  key: '',
+  key: process.env.API_KEY,
   q: '',
   image_type: 'photo',
   orientation: 'horizontal',

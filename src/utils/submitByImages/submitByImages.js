@@ -21,15 +21,15 @@ const promiseProcessing = imagesSet => {
     return;
   } else if (hits.length < PER_PAGE || totalHits / PER_PAGE === page) {
     // Якщо завантажені всі знайдені зображення
-    loadMoreEl.style.display = 'none';
+    refs.loadMoreEl.style.display = 'none';
   } else {
     // Якщо завантажений черговий набір інформації про зображення
-    loadMoreEl.style.display = 'inline-block';
+    refs.loadMoreEl.style.display = 'inline-block';
     page++;
   }
 
   const galleryNodes = hits.map(imageInfo => createImageNode(imageInfo)); // Створення розмітки для одного зображення
-  galleryEl.insertAdjacentHTML('beforeend', galleryNodes.join('')); // Рендер розмітки з зображеннями
+  refs.galleryEl.insertAdjacentHTML('beforeend', galleryNodes.join('')); // Рендер розмітки з зображеннями
   simpleLightBox.refresh(); // Повторна ініціалізація SimpleLightbox
   if (page > 2) smoothScroll(); // Плавний скрол вниз на 2 висоти елемента галереї
 };
@@ -67,7 +67,7 @@ const onSubmitByImages = event => {
 
   callFetchImages(inputText); // Передача нової інформації для запиту
 
-  refs.form.reset();
+  refs.formEl.reset();
 };
 
 /**
