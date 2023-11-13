@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { REQUEST_PARAMS, BASE_URL } from '../../constants/requestParams/REQUEST_PARAMS';
 
-axios.defaults.baseURL = BASE_URL; // Адреса api сервера
+axios.defaults.baseURL = BASE_URL;
 
 /**
- * Виконує запит на сервер
- * @param {object} queryParams інформація про запит за зображенням
- * @returns {object} об'єкт з даними про зображення
+ * Makes a request to the server
+ * @param {object} queryParams image query information
+ * @returns {object} object with image data
  */
 export async function fetchImages(queryParams) {
-  const parameters = new URLSearchParams({ ...REQUEST_PARAMS, ...queryParams }); // Отримує частину url з параметрами
-
-  return await axios.get(`?${parameters}`);
+  const parameters = new URLSearchParams({ ...REQUEST_PARAMS, ...queryParams });
+  const { data } = await axios.get(`?${parameters}`);
+  return data;
 }

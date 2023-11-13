@@ -3,4 +3,5 @@ export const refs = {
   searchBtnEl: document.querySelector('.search-form__button-search'),
   loadMoreEl: document.querySelector('.button-load-more'),
   galleryEl: document.querySelector('.gallery'),
+  messageTextEl: document.querySelector('.message'),
 };

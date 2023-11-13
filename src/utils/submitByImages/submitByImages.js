@@ -4,52 +4,70 @@ import { fetchImages } from '../fetchData/fetchImages';
 import { createImageNode } from '../createNodes/createImageNode';
 import { smoothScroll } from '../scrollUtils/smoothScroll';
 import { PER_PAGE } from '../../constants/requestParams/REQUEST_PARAMS';
+import { notifyFailure, notifySuccess, notifyInfo } from '../notify/notify';
 
-let page = 1; // Представляє номер сторінки для завантаження
-let inputText = ''; // Зображення чого потрібно знайти
+let page = 1;
+let inputText = '';
+let isHiddenLoadMore = true;
 
 /**
- * Рендерить нові зображення якщо проміс успішний
- * @param {object} imagesSet Об'єкт з інформацією про знайдені зображення
+ * Renders new images if the promise is successful
+ * @param {object} imagesSet Object with information about found images
  * @returns {void}
  */
-const promiseProcessing = imagesSet => {
+const promiseSuccessfulProcessing = imagesSet => {
   const { totalHits, hits } = imagesSet;
 
-  // Якщо не знайдено жодного зображення за запитом
+  refs.messageTextEl.style.display = 'none';
+
+  isHiddenLoadMore = hits.length < PER_PAGE || totalHits / PER_PAGE === page;
+
+  // If no requested image is found
   if (!totalHits) {
+    notifyFailure(5000);
     return;
-  } else if (hits.length < PER_PAGE || totalHits / PER_PAGE === page) {
-    // Якщо завантажені всі знайдені зображення
+  } else if (isHiddenLoadMore) {
+    // If all found images are loaded
+    notifyInfo(5000);
     refs.loadMoreEl.style.display = 'none';
   } else {
-    // Якщо завантажений черговий набір інформації про зображення
+    // If another set of image information is loaded
     refs.loadMoreEl.style.display = 'inline-block';
     page++;
   }
 
-  const galleryNodes = hits.map(imageInfo => createImageNode(imageInfo)); // Створення розмітки для одного зображення
-  refs.galleryEl.insertAdjacentHTML('beforeend', galleryNodes.join('')); // Рендер розмітки з зображеннями
-  simpleLightBox.refresh(); // Повторна ініціалізація SimpleLightbox
-  if (page > 2) smoothScroll(); // Плавний скрол вниз на 2 висоти елемента галереї
+  notifySuccess(totalHits, 5000);
+  const galleryNodes = hits.map(imageInfo => createImageNode(imageInfo));
+  refs.galleryEl.insertAdjacentHTML('beforeend', galleryNodes.join(''));
+  simpleLightBox.refresh();
+  page > 2 && smoothScroll();
 };
 
 /**
- * Викликає функцію для виконання запиту на сервер
- * @param {string} q
+ * Request error handling
+ * @param {object} error
+ * @returns {void}
  */
-const callFetchImages = q => {
-  fetchImages({ q, page })
-    .then(imagesSet => promiseProcessing(imagesSet.data))
-    .catch(error => console.log(error));
+const promiseErrorProcessing = error => {
+  refs.messageTextEl.style.display = 'block';
+  refs.messageTextEl.textContent = error.message;
+  if (!isHiddenLoadMore) refs.loadMoreEl.style.display = 'inline-block';
 };
 
 /**
- * Формує нову інформацію для запиту
+ * Calls a function to perform a request to the server
+ * @param {string} q - query
+ */
+const callFetchImages = async q => {
+  await fetchImages({ q, page }).then(promiseSuccessfulProcessing).catch(promiseErrorProcessing);
+};
+
+/**
+ * Generates new information for the query
  * @param {object} event 'submit'
  * @returns {void}
  */
-const onSubmitByImages = event => {
+const onSubmitByImages = async event => {
   event.preventDefault();
 
   refs.searchBtnEl.blur();
@@ -62,16 +80,20 @@ const onSubmitByImages = event => {
   inputText = event.currentTarget.elements.searchQuery.value;
 
   if (!inputText) {
+    notifyFailure();
     return;
   }
 
-  callFetchImages(inputText); // Передача нової інформації для запиту
+  await callFetchImages(inputText);
 
-  refs.formEl.reset();
+  if (page > 1) {
+    refs.messageTextEl.style.display = 'none';
+    refs.formEl.reset();
+  }
 };
 
 /**
- * Завантажує ще зображення за попереднім запитом
+ * Loading more images on previous request
  */
 const onLoadMoreImages = () => {
   refs.loadMoreEl.style.display = 'none';

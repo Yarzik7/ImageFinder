@@ -1,5 +1,5 @@
 /**
- * Скролить сторінку вниз на 2 висоти елемента галереї
+ * Will scroll the page down by 2 heights of the gallery element
  */
 export const smoothScroll = () => {
   const { height: cardHeight } = document
