@@ -83,7 +83,6 @@ const onSubmitByImages = async event => {
 
   refs.searchBtnEl.blur();
 
-  refs.galleryEl.innerHTML = '';
   refs.loadMoreEl.style.display = 'none';
   page = 1;
   inputText = '';
@@ -95,6 +94,7 @@ const onSubmitByImages = async event => {
     return;
   }
 
+  refs.galleryEl.innerHTML = '';
   refs.messageTextEl.style.display = 'none';
   await callFetchImages(inputText);
 

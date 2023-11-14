@@ -1,11 +1,23 @@
 .photo-card {
   overflow: hidden;
-  flex-basis: calc((100% - 3 * 15px) / 4);
+  flex-basis: calc((100% - 0 * $card-gap) / 1);
 
   @include transition(scale);
 
   &:hover,
   &:focus {
     scale: 1.05;
+  }
+
+  @include for-tablet-up {
+    flex-basis: calc((100% - 1 * $card-gap) / 2);
+  }
+
+  @include for-intermediate-tablet-desktop {
+    flex-basis: calc((100% - 2 * $card-gap) / 3);
+  }
+
+  @include for-desktop-up {
+    flex-basis: calc((100% - 3 * $card-gap) / 4);
   }
 }

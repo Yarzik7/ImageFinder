@@ -7,9 +7,10 @@ export const createImageNode = imageInfo => {
   const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = imageInfo;
 
   return `
-      <div class="photo-card">
+      <li class="photo-card">
       <a href="${largeImageURL}" class="gallery__link link">
         <img src="${webformatURL}" alt="${tags}" loading="lazy" class="gallery__image" />
+
         <div class="info">
           <p class="info__item">
             <b class="info__caption">Likes</b>
@@ -29,5 +30,5 @@ export const createImageNode = imageInfo => {
           </p>
         </div>
         </a>
-       </div>`;
+       </li>`;
 };

@@ -3,6 +3,14 @@
   --bg-color: #1b1a1a;
   --bg-button-color: #c0c0c0;
 
+  --container-horizontal-padding: 15px;
+
   --transition-duration: 300ms;
   --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+$card-gap: 20px;
+$breakpoint-small: 375px;
+$breakpoint-medium: 768px;
+$breakpoint-medium-large: 1200px;
+$breakpoint-large: 1440px;

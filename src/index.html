@@ -9,22 +9,24 @@
   </head>
   <body>
     <header class="header">
-      <form class="search-form" id="search-form">
-        <input
-          type="text"
-          class="search-form__input"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="Search images..."
-        />
-        <button type="submit" class="search-form__button-search">S</button>
-      </form>
+      <div class="container">
+        <form class="search-form" id="search-form">
+          <input
+            type="text"
+            class="search-form__input"
+            name="searchQuery"
+            autocomplete="off"
+            placeholder="Search images..."
+          />
+          <button type="submit" class="search-form__button-search">S</button>
+        </form>
+      </div>
     </header>
 
     <main>
       <section class="section">
         <div class="container">
-          <div class="gallery"></div>
+          <ul class="gallery"></ul>
           <p class="message">Here will be images upon your request!</p>
           <div class="loader">
             <span class="spinner"></span>
