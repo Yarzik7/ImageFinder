@@ -1,7 +1,7 @@
 /**
- * Створює розмітку для одного зображення
- * @param {object} imageInfo Дані про зображення
- * @returns {string} Розмітка елемента
+ * Creates a markup for a single image
+ * @param {object} imageInfo
+ * @returns {string} Element markup
  */
 export const createImageNode = imageInfo => {
   const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = imageInfo;
